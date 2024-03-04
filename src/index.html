@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Advanced Timer</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+    integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+  <div id="timer">
+    <div id="timerInput">
+      <input type="number" min="0" max="59" step="1" inputmode="numeric" name="hour" id="hourInput" value="00"
+        placeholder="00" />
+        <p>:</p>
+      <input type="number" min="0" max="59" step="1" inputmode="numeric" name="minute" id="minuteInput" value="25"
+        placeholder="00" />
+        <p>:</p>
+      <input type="number" min="0" max="59" step="1" inputmode="numeric" name="seconds" id="secondsInput" value="00"
+        placeholder="00" />
+      <button id="start">START</button>
+    </div>
+
+    <div id="timerOutput">
+      <h1>
+        <span id="hourOutput">00</span> : <span id="minuteOutput">00</span> :
+        <span id="secondOutput">00</span>
+      </h1>
+      <p>"<span id="quotes">Waktu adalah pedang bermata dua. Ia bisa menjadi sahabat, atau musuhmu. Gunakan dengan bijak</span>"</p>
+
+
+      <div id="buttons">
+        <button id="restart">restart</button>
+        <button id="pause">pause</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- <p id="s">0</p>
+  <p id="m">0</p>
+  <p id="h">0</p> -->
+
+  <script src="./script.js"></script>
+  <script src="timer.js"></script>
+  <script src="./timerHandler.js"></script>
+
+</body>
+
+</html>

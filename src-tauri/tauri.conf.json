@@ -1,0 +1,64 @@
+{
+  "build": {
+    "devPath": "../src",
+    "distDir": "../src",
+    "withGlobalTauri": true
+  },
+  "package": {
+    "productName": "productivity-app",
+    "version": "0.0.0"
+  },
+  "tauri": {
+    "allowlist": {
+      "all": false,
+      "shell": {
+        "all": false,
+        "open": true
+      },
+
+      "window": {
+        "center": true,
+        "close": true,
+        "create": true,
+        "hide": true,
+        "maximize": false,
+        "minimize": false,
+        "print": false,
+        "requestUserAttention": false,
+        "setAlwaysOnTop": false,
+        "setClosable": false,
+        "setContentProtected": false,
+        "setCursorGrab": true,
+        "setCursorIcon": true,
+        "setCursorPosition": true,
+        "setCursorVisible": true,
+        "setDecorations": true,
+        "setFocus": false,
+        "setFullscreen": true,
+        "setIcon": true
+      }
+    },
+    "windows": [
+      {
+        "title": "productivity-app",
+        "width": 339,
+        "height": 480
+      }
+    ],
+    "security": {
+      "csp": null
+    },
+    "bundle": {
+      "active": true,
+      "targets": "all",
+      "identifier": "com.productiviy.app",
+      "icon": [
+        "icons/32x32.png",
+        "icons/128x128.png",
+        "icons/128x128@2x.png",
+        "icons/icon.icns",
+        "icons/icon.ico"
+      ]
+    }
+  }
+}
