@@ -55,6 +55,10 @@ body {
 	max-width: 330px;
 }
 
+#timerInput button:disabled {
+	opacity: 0.1
+}
+
 #timerInput button {
 	border: none;
 	width: 90px;

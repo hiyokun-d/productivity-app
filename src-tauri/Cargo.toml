@@ -1,8 +1,8 @@
 [package]
-name = "productivity-app"
+name = "hTimer"
 version = "0.0.0"
-description = "A Tauri App"
-authors = ["you"]
+description = "Productivity app that basically just a timer that running at the background but with an aesthetic background that you can use on your monitor so it look good"
+authors = ["hiyo"]
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html

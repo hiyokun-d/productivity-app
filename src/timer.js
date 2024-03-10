@@ -88,7 +88,7 @@ function init() {
       s = 60;
     }
   }
-
+  
   //* timer is completed or is out
   if (h === 0 && m === 0 && s === 0) {
     s = 0;
@@ -116,7 +116,7 @@ function init() {
   hour.innerText = padNumber(h);
 }
 
-function complete() {
+async function complete() {
   clearInterval(timerInterval)
   timer.restart = false;
   timer.pause = false;
@@ -125,6 +125,10 @@ function complete() {
   restart.disabled = true
   pause.disabled = true
   timer.restart = true
+
+  //* PLAY THE SOUND EFFECT
+  audioelement.play()
+  //----------------------\\
 
   gsap.to(timerDivOutput, {
     opacity: 0.2,
@@ -262,10 +266,21 @@ function pauseFunc() {
   }
 }
 
-
 start.onclick = () => {
-  startFunc()
-  timerInterval = setInterval(init, 1000);
-}
+  if (s > 0 || m > 0 || h > 0) { // Check if s, m, or h are greater than zero
+    startFunc();
+    timerInterval = setInterval(init, 1000);
+  }
+};
+
+addEventListener("keypress", (e) => {
+  if (e.keyCode == 13 && !start.disabled && (s > 0 || m > 0 || h > 0)) { // Check if spacebar is pressed, start button is enabled, and s, m, or h are greater than zero
+    start.disabled = true;
+    startFunc();
+    timerInterval = setInterval(init, 1000);
+  }
+});
+
+
 pause.onclick = pauseFunc
 restart.onclick = reset
