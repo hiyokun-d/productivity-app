@@ -17,6 +17,7 @@ function reset() {
   timer.start = false;
   pause.classList.remove("paused")
   restart.disabled = true
+  pause.disabled = true
   timer.restart = true
 
   gsap.to(timerDivOutput, {
@@ -88,6 +89,7 @@ function init() {
     }
   }
 
+  //* timer is completed or is out
   if (h === 0 && m === 0 && s === 0) {
     s = 0;
     m = 0;
@@ -95,6 +97,8 @@ function init() {
     clearInterval(timerInterval);
     timer.start = false;
     timer.complete = true
+
+    complete()
   } else {
     timer.complete = false
     if (!timer.pause) {
@@ -112,11 +116,79 @@ function init() {
   hour.innerText = padNumber(h);
 }
 
+function complete() {
+  clearInterval(timerInterval)
+  timer.restart = false;
+  timer.pause = false;
+  timer.start = false;
+  pause.classList.remove("paused")
+  restart.disabled = true
+  pause.disabled = true
+  timer.restart = true
+
+  gsap.to(timerDivOutput, {
+    opacity: 0.2,
+    onComplete: () => {
+      gsap.to(timerDivOutput, {
+        delay: 1,
+        height: 350,
+      })
+      gsap.to(timerDivInput, {
+        position: "absolute",
+        bottom: startPosition,
+        onComplete: () => {
+          gsap.to(timerDivInput, {
+            width: 484,
+            borderRadius: 60,
+
+            onCompelete: () => {
+              gsap.to(timerDivOutput, {
+                delay: 2,
+                opacity: 0
+              })
+            }
+          })
+
+          gsap.to(hourInput, {
+            translateX: 0
+          })
+
+          gsap.to(start, {
+            height: 40,
+            translateX: 0
+          })
+        }
+      })
+
+
+    }
+  })
+
+
+
+  //reset the value
+  s = 0
+  m = 0
+  h = 0
+
+  //enable the input 
+  secondInput.disabled = false;
+  minuteInput.disabled = false;
+  hourInput.disabled = false;
+  start.disabled = false
+
+  //update the output
+  second.innerText = padNumber(0)
+  minute.innerText = padNumber(0)
+  hour.innerText = padNumber(0)
+}
+
 function startFunc() {
   let startButton = -330
   if (!timer.start) {
     timer.start = true;
     restart.disabled = false
+    pause.disabled = false
     // Reset timer values
     s = parseInt(secondInput.value) + 1;
     m = parseInt(minuteInput.value);
